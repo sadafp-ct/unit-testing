@@ -1,0 +1,18 @@
+<div class="container">
+    <app-add-well (wellData)="addNewWell($event)"></app-add-well>
+    <div class="page-header">
+        <h1>Wells</h1>
+    </div>
+    <div class="row">
+        <div *ngFor="let well of wells" class="col-xs-12 col-sm-4">
+            <div class="well well-lg">
+                <p><small>Name: </small><span class="text-bold">{{well.name}}</span></p>
+                <p><small>Type: </small><span class="text-bold">{{well.type}}</span></p>
+                <p>
+                    <small>Source Key: </small>
+                    <a [routerLink]="['/well', well.sourceKey]" class="text-bold">{{well.sourceKey}}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
