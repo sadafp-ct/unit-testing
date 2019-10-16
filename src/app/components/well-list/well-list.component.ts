@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { wells } from '../../data/wells';
+import { WellService } from '../../services/well.service';
 
 @Component({
   selector: 'app-well-list',
@@ -9,18 +9,12 @@ import { wells } from '../../data/wells';
 })
 export class WellListComponent implements OnInit {
 
-  wells = wells;
+  wells: Array<any>;
 
-  constructor() { }
+  constructor(private wellService: WellService) { }
 
-  ngOnInit() { }
-
-  addNewWell(data) {
-    wells.push({
-      'name': data.name, 
-      'sourceKey': data.sourceKey,
-      'type': data.type
-    });
+  ngOnInit() { 
+    this.wells = this.wellService.getWellData();
   }
 
 }
